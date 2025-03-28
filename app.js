@@ -23,7 +23,7 @@ app.get('/fetch', (req, res) => {
                     category: item.category,
                 })
 
-                if( !exists.length ) await trivia.save()
+                if( !exists || !exists.length ) await trivia.save()
             }
             res.send( "Fetched!" )
         } catch (e) {
