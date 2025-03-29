@@ -25,7 +25,7 @@ class Trivia {
 
     async save() {
         try {
-            const sql = `INSERT INTO trivias (question, correct_answer, incorrect_answers, difficulty, type, category) VALUES ( ?, ?, ?, ?, ?, ?)`
+            const sql = `INSERT INTO trivias (question, correct_answer, incorrect_answers, difficulty, type, category) VALUES (?, ?, ?, ?, ?, ?)`
             const res = await query(sql, [
                 this.question,
                 this.correct_answer,
@@ -35,9 +35,17 @@ class Trivia {
                 this.category
             ])
             return {
-                status: false,
+                status: true,
                 message: "Trivia Saved",
-                res: res
+                res: res,
+                values: [
+                    this.question,
+                    this.correct_answer,
+                    this.incorrect_answers,
+                    this.difficulty,
+                    this.type,
+                    this.category
+                ]
             }
         } catch (e) {
             return e
