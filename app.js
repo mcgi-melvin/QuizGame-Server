@@ -25,7 +25,7 @@ app.get('/fetch', (req, res) => {
 
                 if( exists && !exists.length ) await trivia.save()
             }
-            res.send( "Fetched!" )
+            res.send( JSON.stringify(data) )
         } catch (e) {
             res.send( e.message )
         }
