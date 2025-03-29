@@ -16,7 +16,6 @@ app.get('/fetch', (req, res) => {
             if( !data.results ) res.send( 'No Results Found' )
 
             for ( const [key, item] of Object.entries(data.results) ) {
-                console.log( item )
                 const trivia = new Trivia( item.question, item.correct_answer, item.incorrect_answers, item.difficulty, item.type, item.category )
                 const exists = await trivia.get({
                     question: item.question,
