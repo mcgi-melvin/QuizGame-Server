@@ -34,12 +34,11 @@ class Trivia {
                 this.type,
                 this.category
             ])
-            if( res && res.rows.affectedRows )
-                return {
-                    status: false,
-                    message: "Trivia Saved",
-                    res: res
-                }
+            return {
+                status: false,
+                message: "Trivia Saved",
+                res: res
+            }
         } catch (e) {
             return e
         }
