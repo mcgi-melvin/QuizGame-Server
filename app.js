@@ -11,7 +11,8 @@ app.get('/fetch', (req, res) => {
         try {
             const
                 fres = await fetch('https://opentdb.com/api.php?amount=50'),
-                data = await fres.json()
+                data = await fres.json(),
+                out = []
 
             if( !data.results ) res.send( 'No Results Found' )
 
@@ -22,9 +23,13 @@ app.get('/fetch', (req, res) => {
                     category: item.category,
                 })
 
-                await trivia.save()
+                if( exists && !exists.length ) {
+                    const out_res = await trivia.save()
+                    if( out_res ) out.push( out_res )
+                }
+
             }
-            res.send( JSON.stringify(data) )
+            res.send( out )
         } catch (e) {
             res.send( e.message )
         }

@@ -34,7 +34,7 @@ class Trivia {
                 this.type,
                 this.category
             ])
-            if( res && res.affectedRows )
+            if( res && res.rows.affectedRows )
                 return {
                     status: false,
                     message: "Trivia Saved",
