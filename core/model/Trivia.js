@@ -29,7 +29,7 @@ class Trivia {
             const res = await query(sql, [
                 this.question,
                 this.correct_answer,
-                this.incorrect_answers,
+                JSON.stringify(this.incorrect_answers),
                 this.difficulty,
                 this.type,
                 this.category
